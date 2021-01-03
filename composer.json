@@ -1,0 +1,33 @@
+{
+    "name": "liateam/api-exception",
+    "description": "Exception list using in api which help you to easy manage your api exceptions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mojtaba Rakhisi",
+            "email": "mojtaba.rakhisi@gmail.com"
+        }
+    ],
+    "require": {
+        "liateam/api-response": "1.0.0"
+    },
+    "repositories": {
+        "liateam/api-response" : {
+            "type": "vcs",
+            "url": "git@git.liateam.net:php/packages/api-response.git"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Liateam\\Exception\\Providers"
+            ]
+        }
+    }
+}
