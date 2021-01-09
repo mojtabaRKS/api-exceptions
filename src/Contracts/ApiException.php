@@ -50,13 +50,14 @@ abstract class ApiException extends Exception
         // so attach errors and stack trace to response and return it.
         if ($debugMode) {
             $response = $response
-                ->setError([
+                ->setResponseKey('error')
+                ->setResponseValue([
                     'previous' => $this->previous,
                     'trace' => $this->getTrace(),
                     'line' => $this->getLine(),
                 ]);
         }
 
-        return $response->render();
+        return $response;
     }
 }
