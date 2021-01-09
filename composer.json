@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "liateam/api-response": "1.0.0"
+        "liateam/api-response": "^2.0"
     },
     "repositories": {
         "liateam/api-response" : {
