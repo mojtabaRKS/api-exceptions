@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Liateam\\ApiExceptions": "src"
+            "Liateam\\ApiExceptions\\": "src"
         }
     },
     "autoload-dev": {
