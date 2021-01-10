@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Exceptions;
+namespace Liateam\ApiExceptions\Exceptions;
 
 use Illuminate\Http\Response;
 use Liateam\ApiException\Contracts\ApiException;
