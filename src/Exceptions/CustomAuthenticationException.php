@@ -4,7 +4,7 @@ namespace Liateam\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;
-use Liateam\ApiException\Contracts\ApiException;
+use Liateam\ApiExceptions\Contracts\ApiException;
 
 class CustomAuthenticationException extends ApiException
 {
