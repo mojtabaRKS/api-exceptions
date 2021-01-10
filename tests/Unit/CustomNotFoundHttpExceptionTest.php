@@ -4,8 +4,8 @@ namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Illuminate\Http\Response;
 use Throwable;
-use Liateam\ApiException\Tests\BaseTestCase;
-use Liateam\ApiException\Exceptions\CustomNotFoundHttpException;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomNotFoundHttpException;
 
 class CustomNotFoundHttpExceptionTest extends BaseTestCase
 {

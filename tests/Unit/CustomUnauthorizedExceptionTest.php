@@ -5,8 +5,8 @@ namespace Liateam\ApiExceptions\Tests\Unit;
 use Illuminate\Http\Response;
 use Throwable;
 use Liateam\ApiResponse\ApiResponse;
-use Liateam\ApiException\Tests\BaseTestCase;
-use Liateam\ApiException\Exceptions\CustomUnauthorizedException;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException;
 
 class CustomUnauthorizedExceptionTest extends BaseTestCase
 {
