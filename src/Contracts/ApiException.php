@@ -3,11 +3,11 @@
 namespace Liateam\ApiExceptions\Contracts;
 
 use Exception;
-use Liateam\ApiResponse\Contracts\ResponseContract;
 use \Throwable;
 use JetBrains\PhpStorm\Pure;
 use \Illuminate\Http\JsonResponse;
 use Liateam\ApiResponse\Responses\FailureResponse;
+use Liateam\ApiResponse\Contracts\ResponseContract;
 
 abstract class ApiException extends Exception
 {
