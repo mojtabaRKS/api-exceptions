@@ -56,11 +56,11 @@ $ composer update
 
 overwrite `render` method of `App\Exceptions\Handler` like this : 
 ```
-    use Liateam\ApiException\Handlers\ApiException;
+    use Liateam\ApiExceptions\Handlers\ApiException;
   
     public function render($request, Throwable $exception)
     {
-        return ApiException::handle($exception);
+        return ApiException::handle($exception)->render();
     }
 ```
 
