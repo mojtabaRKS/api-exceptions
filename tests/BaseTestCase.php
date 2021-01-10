@@ -2,12 +2,12 @@
 
 namespace Liateam\ApiExceptions\Tests;
 
-use Illuminate\Container\Container;
+use ReflectionClass;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\TestCase;
+use Illuminate\Container\Container;
 use Laravel\Lumen\Exceptions\Handler;
 use Liateam\ApiResponse\Responses\FailureResponse;
-use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 class BaseTestCase extends TestCase
 {

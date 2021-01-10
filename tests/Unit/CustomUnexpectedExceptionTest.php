@@ -3,8 +3,8 @@
 namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Illuminate\Http\Response;
-use Liateam\ApiException\Exceptions\CustomUnexpectedException;
-use Liateam\ApiException\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomUnexpectedException;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
 
 class CustomUnexpectedExceptionTest extends BaseTestCase
 {

@@ -3,7 +3,7 @@
 namespace Liateam\ApiExceptions\Exceptions;
 
 use Illuminate\Http\Response;
-use Liateam\ApiException\Contracts\ApiException;
+use Liateam\ApiExceptions\Contracts\ApiException;
 
 class CustomDefaultException extends ApiException
 {

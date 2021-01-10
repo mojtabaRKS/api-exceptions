@@ -3,8 +3,8 @@
 namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Illuminate\Http\Response;
-use Liateam\ApiException\Exceptions\CustomAuthenticationException;
-use Liateam\ApiException\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomAuthenticationException;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
 
 class CustomAuthenticationExceptionTest extends BaseTestCase
 {

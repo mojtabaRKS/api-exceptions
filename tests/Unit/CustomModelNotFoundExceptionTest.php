@@ -3,8 +3,8 @@
 namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Illuminate\Http\Response;
-use Liateam\ApiException\Exceptions\CustomModelNotFoundException;
-use Liateam\ApiException\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomModelNotFoundException;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
 
 class CustomModelNotFoundExceptionTest extends BaseTestCase
 {

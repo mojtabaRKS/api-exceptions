@@ -43,7 +43,7 @@ easily copy below code and paste in your `composer.json`
 easily copy below code and paste in your `composer.json` -> `require` section
 
 ```
-"liateam/api-exceptions": "1.0.0"
+"liateam/api-exceptions": "^2.0"
 ```
 
 run the command below in your project :
@@ -52,15 +52,30 @@ run the command below in your project :
 $ composer update
 ```
 
+### lumen specific installation
+if your project is lumen so you should copy `Liateam/api-exceptions/src/config/exceptions` to your `config` directory !
+*NOTE* : If you don't have `config` directory so create it !
+
+then add below code in your `bootstrap/app.php` :
+```
+  $app->configure(exceptions);
+```
+
+### laravel specific installation
+```
+$ php artisan vendor:publish --config="Liateam/api-exceptions/src/config/exceptions.php"
+```
+
+
 ## Usage
 
 overwrite `render` method of `App\Exceptions\Handler` like this : 
 ```
-    use Liateam\ApiException\Handlers\ApiException;
+    use Liateam\ApiExceptions\Handlers\ApiException;
   
     public function render($request, Throwable $exception)
     {
-        return ApiException::handle($exception);
+        return ApiException::handle($exception)->render();
     }
 ```
 

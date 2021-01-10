@@ -3,8 +3,8 @@
 namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Illuminate\Http\Response;
-use Liateam\ApiException\Exceptions\CustomRouteNotFoundException;
-use Liateam\ApiException\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomRouteNotFoundException;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
 
 class CustomRouteNotFoundExceptionTest extends BaseTestCase
 {
