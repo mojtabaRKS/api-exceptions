@@ -2,9 +2,9 @@
 
 namespace Liateam\ApiExceptions\Exceptions;
 
-use Illuminate\Http\Response;
-use Liateam\ApiException\Contracts\ApiException;
 use Throwable;
+use Illuminate\Http\Response;
+use Liateam\ApiExceptions\Contracts\ApiException;
 
 class CustomNotFoundHttpException extends ApiException
 {

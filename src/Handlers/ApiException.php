@@ -2,10 +2,10 @@
 
 namespace Liateam\ApiExceptions\Handlers;
 
-use Illuminate\Http\Response;
 use Throwable;
+use Illuminate\Http\Response;
 use Liateam\ApiResponse\Contracts\ResponseContract;
-use Liateam\ApiException\Exceptions\CustomDefaultException;
+use Liateam\ApiExceptions\Exceptions\CustomDefaultException;
 
 /**
  * The classic CoR (Chain of Responsibility) pattern declares a single role for objects that make up a
