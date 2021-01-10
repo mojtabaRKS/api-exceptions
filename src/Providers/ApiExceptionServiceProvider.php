@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Providers;
+namespace Liateam\ApiExceptions\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

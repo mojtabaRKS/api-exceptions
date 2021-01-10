@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Tests\Unit;
+namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Illuminate\Http\Response;
 use Liateam\ApiException\Exceptions\CustomAuthenticationException;
