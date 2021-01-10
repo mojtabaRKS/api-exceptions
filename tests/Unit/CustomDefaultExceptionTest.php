@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Tests\Unit;
+namespace Liateam\ApiExceptions\Tests\Unit;
 
 use Liateam\ApiException\Tests\BaseTestCase;
 use Liateam\ApiException\Exceptions\CustomDefaultException;

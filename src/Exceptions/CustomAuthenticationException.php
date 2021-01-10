@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Exceptions;
+namespace Liateam\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;

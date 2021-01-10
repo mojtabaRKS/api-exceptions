@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Contracts;
+namespace Liateam\ApiExceptions\Contracts;
 
 use Exception;
 use Liateam\ApiResponse\Contracts\ResponseContract;

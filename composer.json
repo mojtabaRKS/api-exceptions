@@ -18,6 +18,11 @@
             "url": "git@git.liateam.net:php/packages/api-response.git"
         }
     },
+    "autoload": {
+        "psr-4": {
+            "Liateam\\ApiExceptions": "src"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests"
@@ -26,7 +31,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Liateam\\Exception\\Providers"
+                "Liateam\\ApiExceptions\\Providers"
             ]
         }
     }

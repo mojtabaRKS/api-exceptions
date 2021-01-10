@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiException\Tests;
+namespace Liateam\ApiExceptions\Tests;
 
 use Illuminate\Container\Container;
 use Illuminate\Http\Request;
