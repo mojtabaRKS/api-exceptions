@@ -56,6 +56,11 @@ $ composer update
 if your project is lumen so you should copy `Liateam/api-exceptions/src/config/exceptions` to your `config` directory !
 *NOTE* : If you don't have `config` directory so create it !
 
+then add below code in your `bootstrap/app.php` :
+```
+  $app->configure(exceptions);
+```
+
 ### laravel specific installation
 ```
 $ php artisan vendor:publish --config="Liateam/api-exceptions/src/config/exceptions.php"
