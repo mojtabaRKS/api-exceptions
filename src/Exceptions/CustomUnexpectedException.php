@@ -4,9 +4,9 @@ namespace Liateam\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;
-use Liateam\ApiExceptions\Contracts\ApiException;
+use Liateam\ApiExceptions\Contracts\ApiExceptionAbstract;
 
-class CustomUnexpectedException extends ApiException
+class CustomUnexpectedException extends ApiExceptionAbstract
 {
     /**
      * CustomUnexpectedException constructor.

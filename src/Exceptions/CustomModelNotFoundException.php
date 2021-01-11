@@ -4,18 +4,52 @@ namespace Liateam\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;
-use Liateam\ApiExceptions\Contracts\ApiException;
+use Liateam\ApiExceptions\Contracts\ApiExceptionAbstract;
 
-class CustomModelNotFoundException extends ApiException
+class CustomModelNotFoundException extends ApiExceptionAbstract
 {
     /**
-     * CustomModelNotFoundException constructor.
-     * @param string $message
-     * @param int $code
-     * @param Throwable|null $previous
+     * @var Throwable $exception
      */
-    public function __construct($message = "", $code = Response::HTTP_INTERNAL_SERVER_ERROR, Throwable $previous = null)
+    public $exception;
+
+    /**
+     * CustomAuthenticationException constructor.
+     * @param $exception
+     */
+    public function __construct(Throwable $exception)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($exception);
+        $this->exception = $exception;
+    }
+
+    /**
+     * @param $code
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if ($code) {
+            $this->code = $code;
+            return $this;
+        }
+
+        $this->code = $this->exception->getCode() ?? Response::HTTP_NOT_FOUND;
+        return $this;
+    }
+
+    /**
+     * @param $message
+     * @return string
+     */
+    public function setMessage($message)
+    {
+        if ($message) {
+            $this->message = $message;
+            return $this;
+        }
+
+        $this->message = $this->exception->getMessage() ?? 'Model Not Found';
+        return $this;
     }
 }
