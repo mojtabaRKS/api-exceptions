@@ -29,16 +29,13 @@ class ApiException
     public static function handle(Throwable $exception)
     {
         $customException = static::getCustomException($exception);
-        $message = static::prepareMessage($exception);
-        $code = static::prepareCode($exception);
 
         if (class_exists($customException)) {
-
-            return (new $customException($message, $code))
+            return (new $customException($exception))
                 ->render();
         }
 
-        return (new CustomDefaultException($message, $code))
+        return (new CustomDefaultException($exception))
             ->render();
     }
 
@@ -58,25 +55,5 @@ class ApiException
         }
 
         return '';
-    }
-
-    private static function prepareCode(Throwable $exception)
-    {
-        $code = $exception->getCode();
-        if ($code === 0) {
-            return Response::HTTP_NOT_ACCEPTABLE;
-        }
-
-        return $code;
-    }
-
-    private static function prepareMessage(Throwable $exception)
-    {
-        $message = $exception->getMessage();
-        if (!empty($message)) {
-            return $message;
-        }
-
-        return 'Whoops! something went wrong... :(';
     }
 }
