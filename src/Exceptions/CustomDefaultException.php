@@ -27,7 +27,7 @@ class CustomDefaultException extends ApiExceptionAbstract
      * @param $code
      * @return CustomDefaultException
      */
-    public function setCode($code): self
+    public function setCode($code = null): self
     {
         if ($code) {
             $this->code = $code;
@@ -42,7 +42,7 @@ class CustomDefaultException extends ApiExceptionAbstract
      * @param $message
      * @return CustomDefaultException
      */
-    public function setMessage($message): self
+    public function setMessage($message = null): self
     {
         if ($message) {
             $this->message = $message;

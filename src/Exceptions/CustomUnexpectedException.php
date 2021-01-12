@@ -14,8 +14,8 @@ class CustomUnexpectedException extends ApiExceptionAbstract
      * @param int $code
      * @param Throwable|null $previous
      */
-    public function __construct($message = "", $code = Response::HTTP_BAD_REQUEST, Throwable $previous = null)
+    public function __construct(Throwable $exception)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($exception);
     }
 }

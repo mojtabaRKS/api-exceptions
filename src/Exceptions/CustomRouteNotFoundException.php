@@ -27,7 +27,7 @@ class CustomRouteNotFoundException extends ApiExceptionAbstract
      * @param $code
      * @return self
      */
-    public function setCode($code)
+    public function setCode($code = null)
     {
         if ($code) {
             $this->code = $code;
@@ -42,7 +42,7 @@ class CustomRouteNotFoundException extends ApiExceptionAbstract
      * @param $message
      * @return self
      */
-    public function setMessage($message)
+    public function setMessage($message = null)
     {
         if ($message) {
             $this->message = $message;

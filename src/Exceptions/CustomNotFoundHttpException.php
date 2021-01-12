@@ -24,18 +24,32 @@ class CustomNotFoundHttpException extends ApiExceptionAbstract
     }
 
     /**
-     * @return int
+     * @param null $code
+     * @return CustomNotFoundHttpException
      */
-    public function setCustomCode(): int
+    public function setCode($code = null)
     {
-        return $this->exception->getCode() ?? Response::HTTP_FORBIDDEN;
+        if ($code) {
+            $this->code = $code;
+            return $this;
+        }
+
+        $this->code = $this->exception->getCode() ?? Response::HTTP_FORBIDDEN;
+        return $this;
     }
 
     /**
-     * @return string
+     * @param null $message
+     * @return $this|CustomNotFoundHttpException
      */
-    public function setCustomMessage(): string
+    public function setMessage($message = null)
     {
-        return $this->exception->getMessage() ?? 'Not Found';
+        if ($message) {
+            $this->message = $message;
+            return $this;
+        }
+
+        $this->message = $this->exception->getMessage() ?? 'Not Found';
+        return $this;
     }
 }

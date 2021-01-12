@@ -19,17 +19,21 @@ class CustomUnauthorizedExceptionTest extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->instance = new CustomUnauthorizedException(new Exception('Unauthorized' , Response::HTTP_UNAUTHORIZED));
+        $this->instance = new CustomUnauthorizedException(new Exception('Unauthorized', Response::HTTP_UNAUTHORIZED));
     }
 
     /**
-     * @covers CustomUnauthorizedException::setCode()
-     * @covers CustomUnauthorizedException::getCode()
-     * @covers CustomUnauthorizedException::setMessage()
-     * @covers CustomUnauthorizedException::getMessage()
-     * @covers CustomUnauthorizedException::setErrors()
-     * @covers CustomUnauthorizedException::getErrors()
-     * @covers CustomUnauthorizedException::__construct()
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::setCode()
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::setMessage()
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::setErrors()
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::getErrors()
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::__construct()
+     * @covers \Liateam\ApiExceptions\Contracts\ApiExceptionAbstract::__construct
+     *
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::createApplication
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::test_unauthorized_exception_is_instance_of_ApiException
      */
     public function test_unauthorized_exception_is_instance_of_ApiException(): void
     {
@@ -43,27 +47,61 @@ class CustomUnauthorizedExceptionTest extends BaseTestCase
     }
 
     /**
-     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::getCode()
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::__construct
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::setCode
+     * @covers \Liateam\ApiExceptions\Contracts\ApiExceptionAbstract::__construct
+     *
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::createApplication
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::test_can_get_correct_code_from_unauthorized_exception
      */
     public function test_can_get_correct_code_from_unauthorized_exception(): void
     {
         self::assertEquals(Response::HTTP_UNAUTHORIZED, $this->instance->getCode());
+
+        self::assertEquals(404 , $this->instance->setCode(404)->getCode());
+
+        $exception = new CustomUnauthorizedException(new Exception);
+        self::assertEquals(0, $exception->getCode());
     }
 
     /**
      * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::setMessage()
-     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::getMessage()
+     * @covers \Liateam\ApiExceptions\Contracts\ApiExceptionAbstract::__construct
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::__construct
+     *
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::createApplication
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::test_can_get_correct_message_from_unauthorized_exception
      */
     public function test_can_get_correct_message_from_unauthorized_exception(): void
     {
         $fakeText = $this->faker->sentence;
         $this->instance->setMessage($fakeText);
-        self::assertEquals($fakeText , $this->instance->getMessage());
+        self::assertEquals($fakeText, $this->instance->getMessage());
     }
 
     /**
      * @throws Throwable
-     * @covers CustomUnauthorizedException::render()
+     *
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::render()
+     * @covers \Liateam\ApiExceptions\Contracts\ApiExceptionAbstract::__construct
+     * @covers \Liateam\ApiExceptions\Contracts\ApiExceptionAbstract::getErrors
+     * @covers \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException::__construct
+     *
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::createApplication
+     * @uses   \Liateam\ApiExceptions\Tests\BaseTestCase::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::setUp
+     * @uses   \Liateam\ApiExceptions\Tests\Unit\CustomUnauthorizedExceptionTest::test_can_render_unauthorized_exception
+     * @uses   \Liateam\ApiResponse\Responses\FailureResponse::__construct
+     * @uses   \Liateam\ApiResponse\Traits\HasProperty::getCode
+     * @uses   \Liateam\ApiResponse\Traits\HasProperty::setCode
+     * @uses   \Liateam\ApiResponse\Traits\HasProperty::setMessage
+     * @uses   \Liateam\ApiResponse\Traits\HasProperty::setResponseKey
+     * @uses   \Liateam\ApiResponse\Traits\HasProperty::setResponseValue
+     * @uses   \Liateam\ApiResponse\Traits\HasProperty::setSuccessStatus
      */
     public function test_can_render_unauthorized_exception(): void
     {
@@ -73,6 +111,6 @@ class CustomUnauthorizedExceptionTest extends BaseTestCase
         );
 
         self::assertInstanceOf($this->expected, $actual);
-        self::assertEquals(Response::HTTP_UNAUTHORIZED , $actual->getCode());
+        self::assertEquals(Response::HTTP_UNAUTHORIZED, $actual->getCode());
     }
 }

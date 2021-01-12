@@ -29,7 +29,7 @@ class CustomValidationException extends ApiExceptionAbstract
      * @param $code
      * @return $this
      */
-    public function setCode($code): self
+    public function setCode($code = null): self
     {
         if ($code) {
             $this->code = $code;
@@ -44,7 +44,7 @@ class CustomValidationException extends ApiExceptionAbstract
      * @param $message
      * @return $this
      */
-    public function setMessage($message)
+    public function setMessage($message = null)
     {
         if ($message) {
             $this->message = $message;

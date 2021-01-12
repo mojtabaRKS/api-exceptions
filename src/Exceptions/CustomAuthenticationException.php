@@ -28,7 +28,7 @@ class CustomAuthenticationException extends ApiExceptionAbstract
      * @param $code
      * @return $this|CustomAuthenticationException
      */
-    public function setCode($code): self
+    public function setCode($code = null): self
     {
         if ($code) {
             $this->code = $code;
@@ -43,9 +43,9 @@ class CustomAuthenticationException extends ApiExceptionAbstract
      * @param $message
      * @return $this|CustomAuthenticationException
      */
-    public function setMessage($message): self
+    public function setMessage($message = null): self
     {
-        if ($message) {
+        if (! empty($message)) {
             $this->message = $message;
             return $this;
         }

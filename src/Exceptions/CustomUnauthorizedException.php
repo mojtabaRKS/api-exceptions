@@ -27,7 +27,7 @@ class CustomUnauthorizedException extends ApiExceptionAbstract
      * @param $code
      * @return $this|CustomUnauthorizedException
      */
-    public function setCode($code)
+    public function setCode($code = null)
     {
         if ($code) {
             $this->code = $code;
@@ -42,7 +42,7 @@ class CustomUnauthorizedException extends ApiExceptionAbstract
      * @param $message
      * @return $this|CustomUnauthorizedException
      */
-    public function setMessage($message)
+    public function setMessage($message = null)
     {
         if ($message) {
             $this->message = $message;
