@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "liateam/api-response": "^2.0"
+        "liateam/api-response": "2.*"
     },
     "repositories": {
         "liateam/api-response" : {
@@ -20,12 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Liateam\\ApiExceptions\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests"
+            "Liateam\\ApiExceptions\\": "src",
+            "Liateam\\ApiExceptions\\Tests\\" : "tests"
         }
     },
     "extra": {
