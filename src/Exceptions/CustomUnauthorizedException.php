@@ -4,18 +4,42 @@ namespace Liateam\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;
-use Liateam\ApiExceptions\Contracts\ApiException;
+use Liateam\ApiExceptions\Contracts\ApiExceptionAbstract;
 
-class CustomUnauthorizedException extends ApiException
+class CustomUnauthorizedException extends ApiExceptionAbstract
 {
     /**
-     * CustomUnauthorizedException constructor.
-     * @param string $message
-     * @param int $code
-     * @param Throwable|null $previous
+     * @var Throwable $exception
      */
-    public function __construct($message = "", $code = Response::HTTP_FORBIDDEN, Throwable $previous = null)
+    public $exception;
+
+    /**
+     * CustomAuthenticationException constructor.
+     * @param $exception
+     */
+    public function __construct(Throwable $exception)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($exception);
+        $this->exception = $exception;
+    }
+
+    /**
+     * @param $code
+     * @return $this|CustomUnauthorizedException
+     */
+    public function setCode($code = null)
+    {
+        $this->code = $code ? $code : Response::HTTP_FORBIDDEN;
+        return $this;
+    }
+
+    /**
+     * @param $message
+     * @return $this|CustomUnauthorizedException
+     */
+    public function setMessage($message = null)
+    {
+        $this->message = !empty($message) ? $message : 'Unauthorized';
+        return $this;
     }
 }

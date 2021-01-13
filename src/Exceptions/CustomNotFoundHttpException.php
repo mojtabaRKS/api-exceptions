@@ -4,18 +4,43 @@ namespace Liateam\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;
-use Liateam\ApiExceptions\Contracts\ApiException;
+use Liateam\ApiExceptions\Contracts\ApiExceptionAbstract;
 
-class CustomNotFoundHttpException extends ApiException
+class CustomNotFoundHttpException extends ApiExceptionAbstract
 {
     /**
-     * CustomNotFoundHttpException constructor.
-     * @param string $message
-     * @param int $code
-     * @param Throwable|null $previous
+     * @var Throwable $exception
      */
-    public function __construct($message = "", $code = Response::HTTP_NOT_FOUND, Throwable $previous = null)
+    public $exception;
+
+    /**
+     * CustomAuthenticationException constructor.
+     * @param $exception
+     */
+    public function __construct(Throwable $exception)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($exception);
+        $this->exception = $exception;
+    }
+
+    /**
+     * @param null $code
+     * @return CustomNotFoundHttpException
+     */
+    public function setCode($code = null)
+    {
+    
+        $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
+        return $this;
+    }
+
+    /**
+     * @param null $message
+     * @return $this|CustomNotFoundHttpException
+     */
+    public function setMessage($message = null)
+    {
+        $this->message = !empty($message) ? $message : 'Not Found';
+        return $this;
     }
 }

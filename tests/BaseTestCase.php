@@ -2,14 +2,15 @@
 
 namespace Liateam\ApiExceptions\Tests;
 
-use Illuminate\Container\Container;
+use Faker\Factory;
+use ReflectionClass;
 use Illuminate\Http\Request;
+use Laravel\Lumen\Testing\TestCase;
+use Illuminate\Container\Container;
 use Laravel\Lumen\Exceptions\Handler;
 use Liateam\ApiResponse\Responses\FailureResponse;
-use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
-class BaseTestCase extends TestCase
+abstract class BaseTestCase extends TestCase
 {
     /**
      * @var Request|\PHPUnit\Framework\MockObject\MockObject
@@ -36,6 +37,11 @@ class BaseTestCase extends TestCase
      */
     protected $expected;
 
+    /**
+     * @var \Faker\Generator
+     */
+    protected $faker;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -45,6 +51,18 @@ class BaseTestCase extends TestCase
         $this->method = $this->class->getMethod('render');
         $this->method->setAccessible(true);
         $this->expected = FailureResponse::class;
+
+        $this->faker = Factory::create();
     }
 
+
+    /**
+     * Creates the application.
+     *
+     * @return \Laravel\Lumen\Application
+     */
+    public function createApplication()
+    {
+        return require __DIR__.'/../../../../bootstrap/app.php';
+    }
 }

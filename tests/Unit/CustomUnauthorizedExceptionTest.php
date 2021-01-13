@@ -2,26 +2,50 @@
 
 namespace Liateam\ApiExceptions\Tests\Unit;
 
+use Mockery\Exception;
 use Illuminate\Http\Response;
-use Throwable;
-use Liateam\ApiResponse\ApiResponse;
-use Liateam\ApiException\Tests\BaseTestCase;
-use Liateam\ApiException\Exceptions\CustomUnauthorizedException;
+use Illuminate\Http\JsonResponse;
+use Liateam\ApiExceptions\Tests\BaseTestCase;
+use Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException;
 
 class CustomUnauthorizedExceptionTest extends BaseTestCase
-{
-    /**
-     * @throws Throwable
-     * @covers CustomUnauthorizedException::render()
-     */
-    public function test_can_render_unauthorized_exception(): void
-    {
-        $actual = $this->handler->render(
-            $this->request,
-            new CustomUnauthorizedException
-        );
+{    
+    private $instance;
 
-        $this->assertInstanceOf($this->expected, $actual);
-        $this->assertEquals(Response::HTTP_FORBIDDEN , $actual->getCode());
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->instance = (new CustomUnauthorizedException(new Exception))->render();
+    }
+
+    
+    public function test_custom_not_found_is_instance_of_ApiException(): void
+    {
+        self::assertInstanceOf(JsonResponse::class, $this->instance);
+    }
+    
+
+    public function test_can_get_correct_code_from_not_found_exception(): void
+    {
+        self::assertEquals(Response::HTTP_FORBIDDEN, $this->instance->getData()->code);
+    }
+
+
+    public function test_can_override_code_from_not_found_exception(): void
+    {
+        $exception = (new CustomUnauthorizedException((new Exception('',Response::HTTP_INTERNAL_SERVER_ERROR))))->render();
+        self::assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $exception->getData()->code);
+    }
+
+    public function test_can_get_correct_message_from_not_found_exception(): void
+    {
+        self::assertEquals('Unauthorized' , $this->instance->getData()->message);
+    }
+    
+    public function test_can_override_message_from_not_found_exception()
+    {
+        $fakeText = $this->faker->sentence;
+        $exception = (new CustomUnauthorizedException((new Exception($fakeText))))->render();
+        self::assertEquals($fakeText, $exception->getData()->message);
     }
 }

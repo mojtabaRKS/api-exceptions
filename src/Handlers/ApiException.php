@@ -3,7 +3,6 @@
 namespace Liateam\ApiExceptions\Handlers;
 
 use Throwable;
-use Illuminate\Http\Response;
 use Liateam\ApiResponse\Contracts\ResponseContract;
 use Liateam\ApiExceptions\Exceptions\CustomDefaultException;
 
@@ -29,17 +28,9 @@ class ApiException
     public static function handle(Throwable $exception)
     {
         $customException = static::getCustomException($exception);
-        $message = static::prepareMessage($exception);
-        $code = static::prepareCode($exception);
-
-        if (class_exists($customException)) {
-
-            return (new $customException($message, $code))
-                ->render();
-        }
-
-        return (new CustomDefaultException($message, $code))
-            ->render();
+        $exceptionObject = (class_exists($customException)) ? new $customException($exception) : new CustomDefaultException($exception);     
+        
+        return $exceptionObject;
     }
 
     /**
@@ -50,33 +41,12 @@ class ApiException
      */
     private static function getCustomException($exception)
     {
-        $exceptions = config('exceptions.list');
         $class = get_class($exception);
 
-        if (array_key_exists($class, $exceptions)) {
-            return $exceptions[$class];
+        if (array_key_exists($class, config('exceptions.list'))) {
+            return config('exceptions.list')[$class];
         }
 
-        return '';
-    }
-
-    private static function prepareCode(Throwable $exception)
-    {
-        $code = $exception->getCode();
-        if ($code === 0) {
-            return Response::HTTP_NOT_ACCEPTABLE;
-        }
-
-        return $code;
-    }
-
-    private static function prepareMessage(Throwable $exception)
-    {
-        $message = $exception->getMessage();
-        if (!empty($message)) {
-            return $message;
-        }
-
-        return 'Whoops! something went wrong... :(';
+        return null;
     }
 }
