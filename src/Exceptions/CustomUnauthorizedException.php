@@ -29,12 +29,7 @@ class CustomUnauthorizedException extends ApiExceptionAbstract
      */
     public function setCode($code = null)
     {
-        if ($code) {
-            $this->code = $code;
-            return $this;
-        }
-
-        $this->code = $this->exception->getCode() ?? Response::HTTP_FORBIDDEN;
+        $this->code = $code ? $code : Response::HTTP_FORBIDDEN;
         return $this;
     }
 
@@ -44,12 +39,7 @@ class CustomUnauthorizedException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        if ($message) {
-            $this->message = $message;
-            return $this;
-        }
-
-        $this->message = $this->exception->getMessage() ?? 'Unauthorized';
+        $this->message = !empty($message) ? $message : 'Unauthorized';
         return $this;
     }
 }

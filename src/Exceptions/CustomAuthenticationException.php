@@ -20,8 +20,8 @@ class CustomAuthenticationException extends ApiExceptionAbstract
 
     public function __construct(Throwable $exception)
     {
-        parent::__construct($exception);
         $this->exception = $exception;
+        parent::__construct($exception);
     }
 
     /**
@@ -30,12 +30,7 @@ class CustomAuthenticationException extends ApiExceptionAbstract
      */
     public function setCode($code = null): self
     {
-        if ($code) {
-            $this->code = $code;
-            return $this;
-        }
-
-        $this->code = $this->exception->getCode() ?? Response::HTTP_FORBIDDEN;
+        $this->code = ($code) ? $code : Response::HTTP_FORBIDDEN;
         return $this;
     }
 
@@ -45,12 +40,7 @@ class CustomAuthenticationException extends ApiExceptionAbstract
      */
     public function setMessage($message = null): self
     {
-        if (! empty($message)) {
-            $this->message = $message;
-            return $this;
-        }
-
-        $this->message = $this->exception->getMessage() ?? 'Unauthenticated Exception';
+        $this->message = !empty($message) ? $message : 'Unauthenticated Exception';
         return $this;
     }
 }
