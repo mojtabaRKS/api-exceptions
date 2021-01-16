@@ -30,7 +30,7 @@ class ApiException
         $customException = static::getCustomException($exception);
         $exceptionObject = (class_exists($customException)) ? new $customException($exception) : new CustomDefaultException($exception);     
         
-        return $exceptionObject;
+        return $exceptionObject->render();
     }
 
     /**
