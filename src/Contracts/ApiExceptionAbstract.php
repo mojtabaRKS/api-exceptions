@@ -63,10 +63,16 @@ abstract class ApiExceptionAbstract extends Exception
         $this->message = $message;
         return $this;
     }
-
+    /**
+     * sett errors for response
+     *
+     * @param array $errors
+     * @return self
+     */
     public function setErrors($errors)
     {
         if (env('APP_DEBUG')) {
+        
             $this->errors= [
                 'trace' => $this->exception->getTrace(),
                 'line' => $this->exception->getLine(),

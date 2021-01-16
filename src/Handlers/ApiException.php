@@ -29,14 +29,9 @@ class ApiException
     public static function handle(Throwable $exception)
     {
         $customException = static::getCustomException($exception);
-
-        if (class_exists($customException)) {
-            return (new $customException($exception))
-                ->render();
-        }
-
-        return (new CustomDefaultException($exception))
-            ->render();
+        $exceptionObject = (class_exists($customException)) ? new $customException($exception) : new CustomDefaultException($exception);     
+        
+        return $exceptionObject->render();
     }
 
     /**
