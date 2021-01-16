@@ -3,7 +3,6 @@
 namespace Liateam\ApiExceptions\Handlers;
 
 use Throwable;
-use Illuminate\Http\Response;
 use Liateam\ApiResponse\Contracts\ResponseContract;
 use Liateam\ApiExceptions\Exceptions\CustomDefaultException;
 
@@ -42,13 +41,12 @@ class ApiException
      */
     private static function getCustomException($exception)
     {
-        $exceptions = config('exceptions.list');
         $class = get_class($exception);
 
-        if (array_key_exists($class, $exceptions)) {
-            return $exceptions[$class];
+        if (array_key_exists($class, config('exceptions.list'))) {
+            return config('exceptions.list')[$class];
         }
 
-        return '';
+        return null;
     }
 }

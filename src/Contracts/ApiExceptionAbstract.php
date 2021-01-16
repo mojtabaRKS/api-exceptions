@@ -38,30 +38,13 @@ abstract class ApiExceptionAbstract extends Exception
      */
     public function render()
     {
+        $this->setCode($this->exception->getCode());
+        $this->setMessage($this->exception->getMessage());
         $response = new FailureResponse($this->getCode(), $this->getMessage());
         return $response
-            ->setResponseKey('error')
-            ->setResponseValue($this->getErrors());
-    }
-
-    /**
-     * @param $code
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-        return $this;
-    }
-
-    /**
-     * @param $message
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-        return $this;
+                ->setResponseKey('error')
+                ->setResponseValue($this->getErrors())
+                ->render();
     }
     /**
      * sett errors for response
@@ -88,4 +71,5 @@ abstract class ApiExceptionAbstract extends Exception
     {
         return $this->errors;
     }
+
 }
