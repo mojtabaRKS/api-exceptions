@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Liateam\\ApiExceptions\\Providers"
+                "Liateam\\ApiExceptions\\Providers\\ApiExceptionServiceProvider"
             ]
         }
     }
