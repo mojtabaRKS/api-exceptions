@@ -75,7 +75,7 @@ overwrite `render` method of `App\Exceptions\Handler` like this :
   
     public function render($request, Throwable $exception)
     {
-        return ApiException::handle($exception)->render();
+        return ApiException::handle($exception);
     }
 ```
 

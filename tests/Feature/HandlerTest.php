@@ -31,7 +31,7 @@ class HandlerTest extends BaseTestCase
             new CustomAuthenticationException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
@@ -46,7 +46,7 @@ class HandlerTest extends BaseTestCase
 
         $response = ApiException::handle(
             new Exception($fakeTest, $code)
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
@@ -63,7 +63,7 @@ class HandlerTest extends BaseTestCase
             new CustomModelNotFoundException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
@@ -80,7 +80,7 @@ class HandlerTest extends BaseTestCase
             new CustomNotFoundHttpException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
@@ -97,7 +97,7 @@ class HandlerTest extends BaseTestCase
             new CustomRouteNotFoundException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
@@ -114,7 +114,7 @@ class HandlerTest extends BaseTestCase
             new CustomUnauthorizedException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
@@ -131,7 +131,7 @@ class HandlerTest extends BaseTestCase
             new CustomUnexpectedException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
