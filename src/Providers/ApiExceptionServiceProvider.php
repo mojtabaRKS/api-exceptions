@@ -4,6 +4,9 @@ namespace Liateam\ApiExceptions\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ApiExceptionServiceProvider extends ServiceProvider
 {
     /**

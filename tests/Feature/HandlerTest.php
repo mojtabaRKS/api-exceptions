@@ -21,9 +21,7 @@ class HandlerTest extends BaseTestCase
         parent::setUp();
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+    
     public function test_it_can_handle_unauthenticated_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -33,16 +31,14 @@ class HandlerTest extends BaseTestCase
             new CustomAuthenticationException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+   
     public function test_it_can_handle_default_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -50,16 +46,14 @@ class HandlerTest extends BaseTestCase
 
         $response = ApiException::handle(
             new Exception($fakeTest, $code)
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+    
     public function test_it_can_handle_model_not_found_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -69,16 +63,14 @@ class HandlerTest extends BaseTestCase
             new CustomModelNotFoundException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+    
     public function test_it_can_handle_not_found_http_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -88,16 +80,14 @@ class HandlerTest extends BaseTestCase
             new CustomNotFoundHttpException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+    
     public function test_it_can_handle_route_not_found_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -107,16 +97,14 @@ class HandlerTest extends BaseTestCase
             new CustomRouteNotFoundException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+    
     public function test_it_can_handle_unauthorized_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -126,16 +114,14 @@ class HandlerTest extends BaseTestCase
             new CustomUnauthorizedException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    /**
-     * @covers ApiException::getCustomException()
-     */
+    
     public function test_it_can_handle_unexpected_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -145,7 +131,7 @@ class HandlerTest extends BaseTestCase
             new CustomUnexpectedException(
                 new Exception($fakeTest, $code)
             )
-        )->render();
+        );
 
         self::assertInstanceOf(JsonResponse::class, $response);
         self::assertEquals($fakeTest, $response->getData()->message);

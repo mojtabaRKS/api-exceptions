@@ -27,14 +27,9 @@ class CustomRouteNotFoundException extends ApiExceptionAbstract
      * @param $code
      * @return self
      */
-    public function setCode($code)
+    public function setCode($code = null)
     {
-        if ($code) {
-            $this->code = $code;
-            return $this;
-        }
-
-        $this->code = $this->exception->getCode() ?? Response::HTTP_FORBIDDEN;
+        $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
         return $this;
     }
 
@@ -42,14 +37,9 @@ class CustomRouteNotFoundException extends ApiExceptionAbstract
      * @param $message
      * @return self
      */
-    public function setMessage($message)
+    public function setMessage($message = null)
     {
-        if ($message) {
-            $this->message = $message;
-            return $this;
-        }
-
-        $this->message = $this->exception->getMessage() ?? 'Route not found';
+        $this->message = !empty($message) ? $message : 'Route not found';
         return $this;
     }
 }

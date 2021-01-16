@@ -27,14 +27,9 @@ class CustomDefaultException extends ApiExceptionAbstract
      * @param $code
      * @return CustomDefaultException
      */
-    public function setCode($code): self
+    public function setCode($code = null): self
     {
-        if ($code) {
-            $this->code = $code;
-            return $this;
-        }
-
-        $this->code = $this->exception->getCode() ?? Response::HTTP_UNPROCESSABLE_ENTITY;
+        $this->code = $code ? $code : Response::HTTP_INTERNAL_SERVER_ERROR;
         return $this;
     }
 
@@ -42,14 +37,9 @@ class CustomDefaultException extends ApiExceptionAbstract
      * @param $message
      * @return CustomDefaultException
      */
-    public function setMessage($message): self
+    public function setMessage($message = null): self
     {
-        if ($message) {
-            $this->message = $message;
-            return $this;
-        }
-
-        $this->message = $this->exception->getMessage() ?? 'Whoops! something went wrong!';
+        $this->message = !empty($message) ? $message : 'Whoops! something went wrong!';
         return $this;
     }
 }

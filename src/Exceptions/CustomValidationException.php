@@ -29,7 +29,7 @@ class CustomValidationException extends ApiExceptionAbstract
      * @param $code
      * @return $this
      */
-    public function setCode($code): self
+    public function setCode($code = null): self
     {
     
         $this->code = ($code) ? $code : Response::HTTP_UNPROCESSABLE_ENTITY;
@@ -40,14 +40,9 @@ class CustomValidationException extends ApiExceptionAbstract
      * @param $message
      * @return $this
      */
-    public function setMessage($message)
+    public function setMessage($message = null)
     {
-        if ($message) {
-            $this->message = $message;
-            return $this;
-        }
-
-        $this->message = $this->exception->getMessage() ?? 'Validation Exception';
+        $this->message = $message ?? 'Validation Exception';
         return $this;
     }
 

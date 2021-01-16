@@ -77,4 +77,5 @@ abstract class ApiExceptionAbstract extends Exception
     {
         return $this->errors;
     }
+
 }

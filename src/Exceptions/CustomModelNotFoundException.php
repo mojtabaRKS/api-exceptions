@@ -19,22 +19,17 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
      */
     public function __construct(Throwable $exception)
     {
-        parent::__construct($exception);
         $this->exception = $exception;
+        parent::__construct($exception);
     }
 
     /**
      * @param $code
      * @return self
      */
-    public function setCode($code)
+    public function setCode($code = null)
     {
-        if ($code) {
-            $this->code = $code;
-            return $this;
-        }
-
-        $this->code = $this->exception->getCode() ?? Response::HTTP_NOT_FOUND;
+        $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
         return $this;
     }
 
@@ -42,14 +37,9 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
      * @param $message
      * @return string
      */
-    public function setMessage($message)
+    public function setMessage($message = null)
     {
-        if ($message) {
-            $this->message = $message;
-            return $this;
-        }
-
-        $this->message = $this->exception->getMessage() ?? 'Model Not Found';
+        $this->message = !empty($message) ? $message : 'Model Not Found';
         return $this;
     }
 }
