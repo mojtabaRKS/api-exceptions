@@ -31,12 +31,8 @@ class CustomValidationException extends ApiExceptionAbstract
      */
     public function setCode($code): self
     {
-        if ($code) {
-            $this->code = $code;
-            return $this;
-        }
-
-        $this->code = $this->exception->getCode() ?? Response::HTTP_BAD_REQUEST;
+    
+        $this->code = ($code) ? $code : Response::HTTP_UNPROCESSABLE_ENTITY;
         return $this;
     }
 
@@ -59,14 +55,13 @@ class CustomValidationException extends ApiExceptionAbstract
      * @param array $errors
      * @return $this
      */
-    public function setErrors($errors = null)
+    public function setErrors($errors = [])
     {
-        if (! empty($errors)) {
-            $this->errors = $errors;
-            return $this;
+        if (! is_array($errors)) {
+            $errors = [$errors];
         }
 
-        $this->errors = $this->exception->validdator->getMessageBag()->all();
+        $this->errors = array_merge($this->exception->validator->getMessageBag()->messages(), $errors);
         return $this;
     }
 }

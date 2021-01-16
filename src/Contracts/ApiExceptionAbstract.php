@@ -38,40 +38,35 @@ abstract class ApiExceptionAbstract extends Exception
      */
     public function render()
     {
+        $this->setCode($this->exception->getCode());
+        $this->setMessage($this->exception->getMessage());
+        $this->SetErrors();
         $response = new FailureResponse($this->getCode(), $this->getMessage());
         return $response
             ->setResponseKey('error')
-            ->setResponseValue($this->getErrors());
+            ->setResponseValue($this->getErrors())
+            ->render();
     }
 
     /**
      * @param $code
      * @return $this
      */
-    public function setCode($code)
+    public function setErrors($errors = [])
     {
-        $this->code = $code;
-        return $this;
-    }
+        if (! is_array($errors)) {
+            $errors = [$errors];
+        }
 
-    /**
-     * @param $message
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->message = $message;
-        return $this;
-    }
-
-    public function setErrors($errors)
-    {
+        $this->errors = array_merge($errors, $this->errors);
+        
         if (env('APP_DEBUG')) {
-            $this->errors= [
+            $this->errors = array_merge([
                 'trace' => $this->exception->getTrace(),
                 'line' => $this->exception->getLine(),
-            ];
+            ], $this->errors);
         }
+
         return $this;
     }
 
