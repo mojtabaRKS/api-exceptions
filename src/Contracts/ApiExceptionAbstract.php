@@ -1,11 +1,11 @@
 <?php
 
-namespace Liateam\ApiExceptions\Contracts;
+namespace Mojtabarks\ApiExceptions\Contracts;
 
 use Exception;
 use \Throwable;
-use Liateam\ApiResponse\Responses\FailureResponse;
-use Liateam\ApiResponse\Contracts\ResponseContract;
+use Mojtabarks\ApiResponse\Responses\FailureResponse;
+use Mojtabarks\ApiResponse\Contracts\ResponseContract;
 
 abstract class ApiExceptionAbstract extends Exception
 {

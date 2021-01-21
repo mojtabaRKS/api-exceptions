@@ -1,18 +1,18 @@
 <?php
 
-namespace Liateam\ApiExceptions\Tests\Feature;
+namespace Mojtabarks\ApiExceptions\Tests\Feature;
 
 use Mockery\Exception;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Liateam\ApiExceptions\Tests\BaseTestCase;
-use Liateam\ApiExceptions\Handlers\ApiException;
-use Liateam\ApiExceptions\Exceptions\CustomUnexpectedException;
-use Liateam\ApiExceptions\Exceptions\CustomNotFoundHttpException;
-use Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException;
-use Liateam\ApiExceptions\Exceptions\CustomModelNotFoundException;
-use Liateam\ApiExceptions\Exceptions\CustomRouteNotFoundException;
-use Liateam\ApiExceptions\Exceptions\CustomAuthenticationException;
+use Mojtabarks\ApiExceptions\Tests\BaseTestCase;
+use Mojtabarks\ApiExceptions\Handlers\ApiException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomUnexpectedException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomNotFoundHttpException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomUnauthorizedException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomModelNotFoundException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomRouteNotFoundException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomAuthenticationException;
 
 class HandlerTest extends BaseTestCase
 {
