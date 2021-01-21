@@ -1,10 +1,10 @@
 <?php
 
-namespace Liateam\ApiExceptions\Exceptions;
+namespace Mojtabarks\ApiExceptions\Exceptions;
 
 use Throwable;
 use Illuminate\Http\Response;
-use Liateam\ApiExceptions\Contracts\ApiExceptionAbstract;
+use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
 
 class CustomNotFoundHttpException extends ApiExceptionAbstract
 {

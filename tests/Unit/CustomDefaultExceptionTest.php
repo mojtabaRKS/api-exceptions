@@ -1,12 +1,12 @@
 <?php
 
-namespace Liateam\ApiExceptions\Tests\Unit;
+namespace Mojtabarks\ApiExceptions\Tests\Unit;
 
 use Mockery\Exception;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Liateam\ApiExceptions\Tests\BaseTestCase;
-use Liateam\ApiExceptions\Exceptions\CustomDefaultException;
+use Mojtabarks\ApiExceptions\Tests\BaseTestCase;
+use Mojtabarks\ApiExceptions\Exceptions\CustomDefaultException;
 
 class CustomDefaultExceptionTest extends BaseTestCase
 {

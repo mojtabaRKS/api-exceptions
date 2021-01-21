@@ -7,13 +7,13 @@
 use \Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
-use \Liateam\ApiExceptions\Exceptions\CustomDefaultException;
-use \Liateam\ApiExceptions\Exceptions\CustomValidationException;
-use \Liateam\ApiExceptions\Exceptions\CustomNotFoundHttpException;
-use \Liateam\ApiExceptions\Exceptions\CustomUnauthorizedException;
-use \Liateam\ApiExceptions\Exceptions\CustomModelNotFoundException;
+use \Mojtabarks\ApiExceptions\Exceptions\CustomDefaultException;
+use \Mojtabarks\ApiExceptions\Exceptions\CustomValidationException;
+use \Mojtabarks\ApiExceptions\Exceptions\CustomNotFoundHttpException;
+use \Mojtabarks\ApiExceptions\Exceptions\CustomUnauthorizedException;
+use \Mojtabarks\ApiExceptions\Exceptions\CustomModelNotFoundException;
 use \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use \Liateam\ApiExceptions\Exceptions\CustomAuthenticationException;
+use \Mojtabarks\ApiExceptions\Exceptions\CustomAuthenticationException;
 use \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 return [
