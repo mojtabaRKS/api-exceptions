@@ -1,6 +1,6 @@
 <?php
 
-namespace Liateam\ApiExceptions\Tests;
+namespace Mojtabarks\ApiExceptions\Tests;
 
 use Faker\Factory;
 use ReflectionClass;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Laravel\Lumen\Testing\TestCase;
 use Illuminate\Container\Container;
 use Laravel\Lumen\Exceptions\Handler;
-use Liateam\ApiResponse\Responses\FailureResponse;
+use Mojtabarks\ApiResponse\Responses\FailureResponse;
 
 abstract class BaseTestCase extends TestCase
 {

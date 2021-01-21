@@ -1,14 +1,14 @@
 <?php
 
-namespace Liateam\ApiExceptions\Tests\Unit;
+namespace Mojtabarks\ApiExceptions\Tests\Unit;
 
 use Throwable;
 use Mockery\Exception;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Liateam\ApiExceptions\Tests\BaseTestCase;
-use Liateam\ApiExceptions\Contracts\ApiExceptionAbstract;
-use Liateam\ApiExceptions\Exceptions\CustomRouteNotFoundException;
+use Mojtabarks\ApiExceptions\Tests\BaseTestCase;
+use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
+use Mojtabarks\ApiExceptions\Exceptions\CustomRouteNotFoundException;
 
 class CustomRouteNotFoundExceptionTest extends BaseTestCase
 {

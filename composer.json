@@ -1,5 +1,5 @@
 {
-    "name": "liateam/api-exceptions",
+    "name": "mojtabarks/api-exceptions",
     "description": "Exception list using in api which help you to easy manage your api exceptions",
     "type": "library",
     "license": "MIT",
@@ -10,24 +10,18 @@
         }
     ],
     "require": {
-        "liateam/api-response": "2.*"
-    },
-    "repositories": {
-        "liateam/api-response" : {
-            "type": "vcs",
-            "url": "git@git.liateam.net:php/packages/api-response.git"
-        }
+        "mojtabarks/api-response": "2.*"
     },
     "autoload": {
         "psr-4": {
-            "Liateam\\ApiExceptions\\": "src",
-            "Liateam\\ApiExceptions\\Tests\\" : "tests"
+            "Mojtabarks\\ApiExceptions\\": "src",
+            "Mojtabarks\\ApiExceptions\\Tests\\" : "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Liateam\\ApiExceptions\\Providers\\ApiExceptionServiceProvider"
+                "Mojtabarks\\ApiExceptions\\Providers\\ApiExceptionServiceProvider"
             ]
         }
     }

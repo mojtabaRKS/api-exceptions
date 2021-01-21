@@ -1,10 +1,10 @@
 <?php
 
-namespace Liateam\ApiExceptions\Handlers;
+namespace Mojtabarks\ApiExceptions\Handlers;
 
 use Throwable;
-use Liateam\ApiResponse\Contracts\ResponseContract;
-use Liateam\ApiExceptions\Exceptions\CustomDefaultException;
+use Mojtabarks\ApiResponse\Contracts\ResponseContract;
+use Mojtabarks\ApiExceptions\Exceptions\CustomDefaultException;
 
 /**
  * The classic CoR (Chain of Responsibility) pattern declares a single role for objects that make up a
