@@ -2,17 +2,17 @@
 
 namespace Mojtabarks\ApiExceptions\Tests\Feature;
 
-use Mockery\Exception;
-use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Mojtabarks\ApiExceptions\Tests\BaseTestCase;
-use Mojtabarks\ApiExceptions\Handlers\ApiException;
-use Mojtabarks\ApiExceptions\Exceptions\CustomUnexpectedException;
-use Mojtabarks\ApiExceptions\Exceptions\CustomNotFoundHttpException;
-use Mojtabarks\ApiExceptions\Exceptions\CustomUnauthorizedException;
-use Mojtabarks\ApiExceptions\Exceptions\CustomModelNotFoundException;
-use Mojtabarks\ApiExceptions\Exceptions\CustomRouteNotFoundException;
+use Illuminate\Http\Response;
+use Mockery\Exception;
 use Mojtabarks\ApiExceptions\Exceptions\CustomAuthenticationException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomModelNotFoundException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomNotFoundHttpException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomRouteNotFoundException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomUnauthorizedException;
+use Mojtabarks\ApiExceptions\Exceptions\CustomUnexpectedException;
+use Mojtabarks\ApiExceptions\Handlers\ApiException;
+use Mojtabarks\ApiExceptions\Tests\BaseTestCase;
 
 class HandlerTest extends BaseTestCase
 {
@@ -21,7 +21,6 @@ class HandlerTest extends BaseTestCase
         parent::setUp();
     }
 
-    
     public function test_it_can_handle_unauthenticated_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -38,7 +37,6 @@ class HandlerTest extends BaseTestCase
         self::assertEquals($code, $response->getStatusCode());
     }
 
-   
     public function test_it_can_handle_default_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -53,7 +51,6 @@ class HandlerTest extends BaseTestCase
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    
     public function test_it_can_handle_model_not_found_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -70,7 +67,6 @@ class HandlerTest extends BaseTestCase
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    
     public function test_it_can_handle_not_found_http_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -87,7 +83,6 @@ class HandlerTest extends BaseTestCase
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    
     public function test_it_can_handle_route_not_found_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -104,7 +99,6 @@ class HandlerTest extends BaseTestCase
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    
     public function test_it_can_handle_unauthorized_exception(): void
     {
         $fakeTest = $this->faker->sentence;
@@ -121,7 +115,6 @@ class HandlerTest extends BaseTestCase
         self::assertEquals($code, $response->getStatusCode());
     }
 
-    
     public function test_it_can_handle_unexpected_exception(): void
     {
         $fakeTest = $this->faker->sentence;

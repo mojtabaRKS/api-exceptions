@@ -3,12 +3,12 @@
 namespace Mojtabarks\ApiExceptions\Tests;
 
 use Faker\Factory;
-use ReflectionClass;
-use Illuminate\Http\Request;
-use Laravel\Lumen\Testing\TestCase;
 use Illuminate\Container\Container;
+use Illuminate\Http\Request;
 use Laravel\Lumen\Exceptions\Handler;
+use Laravel\Lumen\Testing\TestCase;
 use Mojtabarks\ApiResponse\Responses\FailureResponse;
+use ReflectionClass;
 
 abstract class BaseTestCase extends TestCase
 {
@@ -33,7 +33,7 @@ abstract class BaseTestCase extends TestCase
     protected $class;
 
     /**
-     * @var string $excepted
+     * @var string
      */
     protected $expected;
 
@@ -54,7 +54,6 @@ abstract class BaseTestCase extends TestCase
 
         $this->faker = Factory::create();
     }
-
 
     /**
      * Creates the application.
