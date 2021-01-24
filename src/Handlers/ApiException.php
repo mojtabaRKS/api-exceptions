@@ -2,9 +2,9 @@
 
 namespace Mojtabarks\ApiExceptions\Handlers;
 
-use Throwable;
-use Mojtabarks\ApiResponse\Contracts\ResponseContract;
 use Mojtabarks\ApiExceptions\Exceptions\CustomDefaultException;
+use Mojtabarks\ApiResponse\Contracts\ResponseContract;
+use Throwable;
 
 /**
  * The classic CoR (Chain of Responsibility) pattern declares a single role for objects that make up a
@@ -23,13 +23,14 @@ class ApiException
      * request.
      *
      * @param Throwable $exception
+     *
      * @return ResponseContract
      */
     public static function handle(Throwable $exception)
     {
         $customException = static::getCustomException($exception);
-        $exceptionObject = (class_exists($customException)) ? new $customException($exception) : new CustomDefaultException($exception);     
-        
+        $exceptionObject = (class_exists($customException)) ? new $customException($exception) : new CustomDefaultException($exception);
+
         return $exceptionObject->render();
     }
 
@@ -37,6 +38,7 @@ class ApiException
      * returns mapped laravel|lumen class with mapped custom class.
      *
      * @param $exception
+     *
      * @return mixed|string
      */
     private static function getCustomException($exception)

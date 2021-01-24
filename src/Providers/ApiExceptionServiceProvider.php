@@ -17,7 +17,7 @@ class ApiExceptionServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/exceptions.php' => config_path('exceptions.php'),
+            __DIR__.'/../config/exceptions.php' => config_path('exceptions.php'),
         ]);
     }
 }
