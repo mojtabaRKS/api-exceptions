@@ -40,8 +40,7 @@ class CustomUnexpectedException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : 'Unexpected Exception';
-
+        $this->message = !empty($message) ? $message : trans('errors::errors.unexpected');
         return $this;
     }
 }

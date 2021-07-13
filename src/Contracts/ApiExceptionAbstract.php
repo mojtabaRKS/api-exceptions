@@ -28,7 +28,7 @@ abstract class ApiExceptionAbstract extends Exception
     public function __construct(Throwable $exception)
     {
         $this->exception = $exception;
-        parent::__construct($exception->getMessage(), $exception->getCode());
+        parent::__construct($exception->getMessage(), (int) $exception->getCode());
     }
 
     /**
@@ -56,13 +56,9 @@ abstract class ApiExceptionAbstract extends Exception
      */
     public function setErrors($errors = [])
     {
-        if (!is_array($errors)) {
-            $errors = [$errors];
-        }
+        $this->errors = array_merge((array)$errors, $this->errors);
 
-        $this->errors = array_merge($errors, $this->errors);
-
-        if (env('APP_DEBUG')) {
+        if ($this->debugMode()) {
             $this->errors = array_merge([
                 'trace' => $this->exception->getTrace(),
                 'line'  => $this->exception->getLine(),
@@ -78,5 +74,15 @@ abstract class ApiExceptionAbstract extends Exception
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    /**
+     * check the application is in debug mode or not
+     *
+     * @return boolean
+     */
+    protected function debugMode(): bool
+    {
+        return config('app.debug');
     }
 }

@@ -43,8 +43,7 @@ class CustomRouteNotFoundException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : 'Route not found';
-
+        $this->message = !empty($message) ? $message : trans('errors::errors.route_not_found');
         return $this;
     }
 }

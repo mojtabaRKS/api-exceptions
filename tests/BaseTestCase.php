@@ -2,16 +2,19 @@
 
 namespace Mojtabarks\ApiExceptions\Tests;
 
-use Faker\Factory;
+use App\Exceptions\Handler;
+use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Container\Container;
 use Illuminate\Http\Request;
-use Laravel\Lumen\Exceptions\Handler;
-use Laravel\Lumen\Testing\TestCase;
 use Mojtabarks\ApiResponse\Responses\FailureResponse;
 use ReflectionClass;
+use Faker\Factory;
+use Tests\CreatesApplication;
 
 abstract class BaseTestCase extends TestCase
 {
+    use CreatesApplication;
+
     /**
      * @var Request|\PHPUnit\Framework\MockObject\MockObject
      */
@@ -53,15 +56,5 @@ abstract class BaseTestCase extends TestCase
         $this->expected = FailureResponse::class;
 
         $this->faker = Factory::create();
-    }
-
-    /**
-     * Creates the application.
-     *
-     * @return \Laravel\Lumen\Application
-     */
-    public function createApplication()
-    {
-        return require __DIR__.'/../../../../bootstrap/app.php';
     }
 }

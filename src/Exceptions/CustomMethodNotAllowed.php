@@ -2,48 +2,44 @@
 
 namespace Mojtabarks\ApiExceptions\Exceptions;
 
-use Illuminate\Http\Response;
 use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
+use Illuminate\Http\Response;
 use Throwable;
 
-class CustomNotFoundHttpException extends ApiExceptionAbstract
+class CustomMethodNotAllowed extends ApiExceptionAbstract
 {
     /**
-     * @var Throwable
+     * @var Throwable $exception
      */
     public $exception;
 
     /**
      * CustomAuthenticationException constructor.
-     *
      * @param $exception
      */
     public function __construct(Throwable $exception)
     {
-        parent::__construct($exception);
         $this->exception = $exception;
+        parent::__construct($exception);
     }
 
     /**
-     * @param null $code
-     *
-     * @return CustomNotFoundHttpException
+     * @param $code
+     * @return self
      */
     public function setCode($code = null)
     {
-        $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
-
+        $this->code = $code ? $code : Response::HTTP_METHOD_NOT_ALLOWED;
         return $this;
     }
 
     /**
-     * @param null $message
-     *
-     * @return $this|CustomNotFoundHttpException
+     * @param $message
+     * @return string
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : trans('errors::errors.not_found');
+        $this->message = !empty($message) ? $message : trans('errors::errors.method_not_allowed');
         return $this;
     }
 }

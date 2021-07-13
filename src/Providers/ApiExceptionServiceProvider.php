@@ -16,8 +16,19 @@ class ApiExceptionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        $this->publishes([
+            __DIR__ . '/../lang' => resource_path('lang/vendor/errors'),
+        ]);
+
         $this->publishes([
             __DIR__.'/../config/exceptions.php' => config_path('exceptions.php'),
         ]);
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/exceptions.php' , 'exceptions'
+        );
+
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'errors');
     }
 }

@@ -23,26 +23,19 @@ class CustomModelNotFoundExceptionTest extends BaseTestCase
         self::assertInstanceOf(JsonResponse::class, $this->instance);
     }
 
-    public function test_can_get_correct_code_from_mode_not_found_exception(): void
+    public function test_can_get_correct_code_from_model_not_found_exception(): void
     {
         self::assertEquals(Response::HTTP_NOT_FOUND, $this->instance->getData()->code);
     }
 
-    public function test_can_override_code_from_mode_not_found_exception(): void
+    public function test_can_override_code_from_model_not_found_exception(): void
     {
         $exception = (new CustomModelNotFoundException((new Exception('', Response::HTTP_INTERNAL_SERVER_ERROR))))->render();
         self::assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $exception->getData()->code);
     }
 
-    public function test_can_get_correct_message_from_mode_not_found_exception(): void
+    public function test_can_get_correct_message_from_model_not_found_exception(): void
     {
         self::assertEquals('Model Not Found', $this->instance->getData()->message);
-    }
-
-    public function test_can_override_message_from_mode_not_found_exception()
-    {
-        $fakeText = $this->faker->sentence;
-        $exception = (new CustomModelNotFoundException((new Exception($fakeText))))->render();
-        self::assertEquals($fakeText, $exception->getData()->message);
     }
 }
