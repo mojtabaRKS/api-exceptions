@@ -22,7 +22,7 @@ class ApiExceptionServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__ . '/../config/exceptions.php' => config_path('exceptions.php'),
+            __DIR__.'/../config/exceptions.php' => config_path('exceptions.php'),
         ]);
 
         $this->mergeConfigFrom(

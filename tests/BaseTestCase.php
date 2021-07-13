@@ -36,7 +36,7 @@ abstract class BaseTestCase extends TestCase
     protected $class;
 
     /**
-     * @var string $excepted
+     * @var string
      */
     protected $expected;
 

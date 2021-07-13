@@ -2,19 +2,20 @@
 
 namespace Mojtabarks\ApiExceptions\Exceptions;
 
-use Throwable;
 use Illuminate\Http\Response;
 use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
+use Throwable;
 
 class CustomDefaultException extends ApiExceptionAbstract
 {
     /**
-     * @var Throwable $exception
+     * @var Throwable
      */
     public $exception;
 
     /**
      * CustomAuthenticationException constructor.
+     *
      * @param $exception
      */
     public function __construct(Throwable $exception)
@@ -25,16 +26,19 @@ class CustomDefaultException extends ApiExceptionAbstract
 
     /**
      * @param $code
+     *
      * @return CustomDefaultException
      */
     public function setCode($code = null): self
     {
         $this->code = $code ? $code : Response::HTTP_INTERNAL_SERVER_ERROR;
+
         return $this;
     }
 
     /**
      * @param $message
+     *
      * @return CustomDefaultException
      */
     public function setMessage($message = null): self

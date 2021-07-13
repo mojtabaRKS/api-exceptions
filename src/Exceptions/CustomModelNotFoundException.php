@@ -2,19 +2,20 @@
 
 namespace Mojtabarks\ApiExceptions\Exceptions;
 
-use Throwable;
 use Illuminate\Http\Response;
 use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
+use Throwable;
 
 class CustomModelNotFoundException extends ApiExceptionAbstract
 {
     /**
-     * @var Throwable $exception
+     * @var Throwable
      */
     public $exception;
 
     /**
      * CustomAuthenticationException constructor.
+     *
      * @param $exception
      */
     public function __construct(Throwable $exception)
@@ -25,16 +26,19 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
 
     /**
      * @param $code
+     *
      * @return self
      */
     public function setCode($code = null)
     {
         $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
+
         return $this;
     }
 
     /**
      * @param $message
+     *
      * @return string
      */
     public function setMessage($message = null)

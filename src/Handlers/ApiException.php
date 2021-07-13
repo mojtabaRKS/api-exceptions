@@ -2,14 +2,14 @@
 
 namespace Mojtabarks\ApiExceptions\Handlers;
 
-use Throwable;
-use Mojtabarks\ApiResponse\Contracts\ResponseContract;
 use Mojtabarks\ApiExceptions\Exceptions\CustomDefaultException;
+
 class ApiException
 {
     /**
      *
      * @param Throwable $exception
+     *
      * @return ResponseContract
      */
     public static function handle(Throwable $exception)
@@ -24,6 +24,7 @@ class ApiException
      * returns mapped laravel|lumen class with mapped custom class.
      *
      * @param $exception
+     *
      * @return mixed|string
      */
     private static function getCustomException($exception)
