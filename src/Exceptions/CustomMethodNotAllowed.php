@@ -2,11 +2,11 @@
 
 namespace Mojtabarks\ApiExceptions\Exceptions;
 
-use Throwable;
-use Illuminate\Http\Response;
 use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
+use Illuminate\Http\Response;
+use Throwable;
 
-class CustomModelNotFoundException extends ApiExceptionAbstract
+class CustomMethodNotAllowed extends ApiExceptionAbstract
 {
     /**
      * @var Throwable $exception
@@ -29,7 +29,7 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
      */
     public function setCode($code = null)
     {
-        $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
+        $this->code = $code ? $code : Response::HTTP_METHOD_NOT_ALLOWED;
         return $this;
     }
 
@@ -39,7 +39,7 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = trans('errors.model_not_found');
+        $this->message = !empty($message) ? $message : trans('errors.method_not_allowed');
         return $this;
     }
 }

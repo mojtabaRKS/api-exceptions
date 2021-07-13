@@ -40,7 +40,7 @@ class CustomAuthenticationException extends ApiExceptionAbstract
      */
     public function setMessage($message = null): self
     {
-        $this->message = !empty($message) ? $message : 'Unauthenticated Exception';
+        $this->message = !empty($message) ? $message : trans('errors.unauthenticated');
         return $this;
     }
 }

@@ -29,7 +29,7 @@ class CustomNotFoundHttpException extends ApiExceptionAbstract
      */
     public function setCode($code = null)
     {
-    
+
         $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
         return $this;
     }
@@ -40,7 +40,7 @@ class CustomNotFoundHttpException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : 'Not Found';
+        $this->message = !empty($message) ? $message : trans('errors.not_found');
         return $this;
     }
 }

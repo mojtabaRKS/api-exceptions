@@ -6,7 +6,7 @@ use Throwable;
 use Illuminate\Http\Response;
 use Mojtabarks\ApiExceptions\Contracts\ApiExceptionAbstract;
 
-class CustomModelNotFoundException extends ApiExceptionAbstract
+class CustomQueryException extends ApiExceptionAbstract
 {
     /**
      * @var Throwable $exception
@@ -17,6 +17,7 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
      * CustomAuthenticationException constructor.
      * @param $exception
      */
+
     public function __construct(Throwable $exception)
     {
         $this->exception = $exception;
@@ -25,21 +26,21 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
 
     /**
      * @param $code
-     * @return self
+     * @return $this|CustomAuthenticationException
      */
-    public function setCode($code = null)
+    public function setCode($code = null): self
     {
-        $this->code = $code ? $code : Response::HTTP_NOT_FOUND;
+        $this->code = Response::HTTP_INTERNAL_SERVER_ERROR;
         return $this;
     }
 
     /**
      * @param $message
-     * @return string
+     * @return $this|CustomAuthenticationException
      */
-    public function setMessage($message = null)
+    public function setMessage($message = null): self
     {
-        $this->message = trans('errors.model_not_found');
+        $this->message = (!empty($message) && $this->debugMode()) ? $message : trans('errors.default');
         return $this;
     }
 }
