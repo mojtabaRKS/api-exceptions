@@ -39,7 +39,7 @@ class CustomMethodNotAllowed extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : trans('errors.method_not_allowed');
+        $this->message = !empty($message) ? $message : trans('errors::errors.method_not_allowed');
         return $this;
     }
 }

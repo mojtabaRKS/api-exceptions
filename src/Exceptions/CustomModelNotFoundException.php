@@ -39,7 +39,7 @@ class CustomModelNotFoundException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = trans('errors.model_not_found');
+        $this->message = trans('errors::errors.model_not_found');
         return $this;
     }
 }

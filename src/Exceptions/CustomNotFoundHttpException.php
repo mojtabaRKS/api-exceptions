@@ -40,7 +40,7 @@ class CustomNotFoundHttpException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : trans('errors.not_found');
+        $this->message = !empty($message) ? $message : trans('errors::errors.not_found');
         return $this;
     }
 }

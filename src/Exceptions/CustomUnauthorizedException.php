@@ -39,7 +39,7 @@ class CustomUnauthorizedException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = !empty($message) ? $message : trans('errors.unauthorized');
+        $this->message = !empty($message) ? $message : trans('errors::errors.unauthorized');
         return $this;
     }
 }

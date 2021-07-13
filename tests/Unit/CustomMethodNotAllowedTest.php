@@ -39,7 +39,7 @@ class CustomMethodNotAllowedTest extends BaseTestCase
 
     public function test_can_get_correct_message_from_method_not_allowed_exception(): void
     {
-        self::assertEquals(trans('errors.method_not_allowed') , $this->instance->getData()->message);
+        self::assertEquals(trans('errors::errors.method_not_allowed') , $this->instance->getData()->message);
     }
 
     public function test_can_override_message_from_method_not_allowed_exception()

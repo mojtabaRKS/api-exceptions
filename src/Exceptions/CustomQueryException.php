@@ -40,7 +40,7 @@ class CustomQueryException extends ApiExceptionAbstract
      */
     public function setMessage($message = null): self
     {
-        $this->message = (!empty($message) && $this->debugMode()) ? $message : trans('errors.default');
+        $this->message = (!empty($message) && $this->debugMode()) ? $message : trans('errors::errors.default');
         return $this;
     }
 }

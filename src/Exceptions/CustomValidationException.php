@@ -42,7 +42,7 @@ class CustomValidationException extends ApiExceptionAbstract
      */
     public function setMessage($message = null)
     {
-        $this->message = trans('errors.validation');
+        $this->message = trans('errors::errors.validation');
         return $this;
     }
 

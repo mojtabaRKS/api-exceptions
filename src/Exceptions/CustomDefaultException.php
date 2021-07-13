@@ -39,7 +39,7 @@ class CustomDefaultException extends ApiExceptionAbstract
      */
     public function setMessage($message = null): self
     {
-        $this->message = !empty($message) ? $message : trans('errors.default');
+        $this->message = !empty($message) ? $message : trans('errors::errors.default');
         return $this;
     }
 }

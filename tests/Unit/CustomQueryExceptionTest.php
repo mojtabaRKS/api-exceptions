@@ -50,7 +50,7 @@ class CustomQueryExceptionTest extends BaseTestCase
             new QueryException('SQL ERROR', ['name' => $this->faker->name], new Exception('asd', 500))
         ))->render();
 
-        $this->assertEquals(trans('errors.default'), $instance->getData()->message);
+        $this->assertEquals(trans('errors::errors.default'), $instance->getData()->message);
     }
 
     public function test_can_override_message_from_query_exception()
