@@ -12,7 +12,7 @@ class ApiException
      *
      * @return ResponseContract
      */
-    public static function handle(Throwable $exception)
+    public static function handle(\Throwable $exception)
     {
         $customException = static::getCustomException($exception);
         $exceptionObject = (class_exists($customException)) ? new $customException($exception) : new CustomDefaultException($exception);
